@@ -339,7 +339,7 @@ if(userData.coins >=200){
   }
     if (x.result===0){
 
-    const API_KEY = '3df39a1cbamsh63f95b9f20d493ep18c3d2jsnaa9a8f6d3181';
+    const API_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
     const API_HOST = 'api-football-v1.p.rapidapi.com';
     const config = {
       headers:{
