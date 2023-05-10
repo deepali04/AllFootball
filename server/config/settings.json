@@ -1,0 +1,6 @@
+{
+  "mongoConfig": {
+    "serverUrl": "https://data.mongodb-api.com/app/data-ccqew/endpoint/data/v1",
+    "database": "devloopers"
+  }
+}
