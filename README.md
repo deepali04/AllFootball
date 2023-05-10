@@ -9,6 +9,28 @@ Our website offers football fans a one-stop-shop for all their football needs. W
 
 I'm using **Rapid API** for the live football data. It is a paid version. You can go on their website [here](https://rapidapi.com/api-sports/api/api-football) and get you API key and access tokens and replace API key with your API key.
 
+### How to install and run AllFootball⚽
+
+- Fork the Project / Download the source code as a zip file
+- Navigate to the project root directory
+- Navigate to the server (cd server)
+- Install the server-side dependencies (npm install) or (npm i)
+- Start the server (npm start) (serverl URL is: localhost:4000 )
+- Navigate back to the root directory
+- Navigate to the client (cd client)
+- Install the client-side dependencies (npm install) or (npm i)
+- Start the client (npm start)
+- Navigate to localhost:3000
+- Enjoy!!!
+
+### How to use AllFootball⚽
+
+- Access the landingpage/homepage (localhost: 3000)
+- You'll be able to see the scheculed matches (today's date), You can access all the information (league information, player information, team information) without signup/login. 
+- To play betting game you'll need to create and account and be a member:) Signup and then login to your accound. Predict match result and you'll be able to see your score. You'll receive coins if your prediction was correct. Once you have 200 coins you will be upgraded to premium user!!!
+- If you are a premium user, then you'll be able to follow your favorite team and players so that you can access their information easily.
+- You can also search players from your homepage.
+
 
 
 
