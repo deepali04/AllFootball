@@ -1,0 +1,32 @@
+{
+  "name": "AllFootball",
+  "version": "1.0.0",
+  "description": "CS554 Final project Devloopers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushabh1605/devloopers.git"
+  },
+  "author": "Devloopers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rushabh1605/devloopers/issues"
+  },
+  "homepage": "https://github.com/rushabh1605/devloopers#readme",
+  "dependencies": {
+    "apollo-server": "^3.12.0",
+    "axios": "^1.4.0",
+    "graphql": "^16.6.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "mongo": "^0.1.0",
+    "mongodb": "^5.4.0",
+    "nodemon": "^2.0.22",
+    "redis": "^4.6.6",
+    "uuid": "^9.0.0"
+  }
+}
