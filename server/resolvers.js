@@ -38,8 +38,6 @@ module.exports = {
            
       leagueList.push(singleLeague);       
       });
-      //console.log(leagueList.slice(0,7)); 
-      // console.log(leagueList.slice(0,7)); 
       return leagueList;
     },
 
@@ -66,8 +64,6 @@ module.exports = {
       let leagueList=[]; 
       //const topLeagues = data.response.filter(league => desiredLeagues.includes(league.country.name));
       const topLeagues = data.response.filter(league => desiredLeagues.includes(league.league.id));
-
-      //console.log(topLeagues);
       topLeagues.forEach(league => {
         let singleLeague = {
           id : league.league.id,
@@ -177,7 +173,6 @@ module.exports = {
     },
 
     GetPlayerByID : async (_, args) => {
-      console.log(args.playerId); 
       const {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v3/players?id="+ args.playerId+"&season="+ args.season, config);
       
       if(data.response.length===0){
@@ -228,8 +223,7 @@ module.exports = {
         }          
         topScorersList.push(singlePlayer);       
       });
-
-      //console.log(topScorersList.slice(0,2));            
+          
       return topScorersList;
     },
 
@@ -274,10 +268,7 @@ module.exports = {
 
 
     TeamInformation : async (_, args) => {
-      console.log("heyyyyy")
-      console.log(args)
-      console.log(args.teamID)
- 
+
       const { data } = await axios.get("https://api-football-v1.p.rapidapi.com/v3/teams?id="+ args.teamID, config);
 
       let responseData= data.response[0];
@@ -294,7 +285,7 @@ module.exports = {
         capacity: responseData.venue.capacity,
         venueImage: responseData.venue.image
       }  
-      console.log(singleTeam);          
+       
     return singleTeam;
   },
 
@@ -336,30 +327,18 @@ module.exports = {
     let index;
     let newArray=[];
     if(key_exists){
-      console.log("helllo");
-      //index = await client.get(args.userId +"_PlayerFollowing")  ;
-      // return JSON.stringify(index); 
-      // console.log(index)
+
       const length = await client.lLen(args.userId +"_PlayerFollowing");
-      //console.log(length);
       for(let i=0; i<length; i++){
           const result = await client.lIndex(args.userId +"_PlayerFollowing", i);
-          // console.log(result)
-          // console.log(JSON.parse(result))
-          
 
           let tempPlayerId= parseInt(JSON.parse(result))
 
           const {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v3/players?id="+ tempPlayerId+"&season=2022" , config);  
 
-          console.log(data.response[0]);
-
-
-
           let newObject= {playerId: tempPlayerId, playerName: data.response[0].player.name, playerImage: data.response[0].player.photo}
           newArray.push(newObject);        
       }
-      console.log(newArray)
       if(newArray.length!== 0) {
           return newArray;
       } else{
@@ -376,12 +355,10 @@ module.exports = {
     let index;
     let newArray=[];
     if(key_exists){
-      console.log("helllo");
       const length = await client.lLen(args.userId +"_TeamFollowing");
       for(let i=0; i<length; i++){
           const result = await client.lIndex(args.userId +"_TeamFollowing", i);
-          //console.log(typeof(result))
-          console.log(typeof(parseInt(JSON.parse(result))));
+
           let newObject= {teamID: parseInt(JSON.parse(result))}
           newArray.push({teamID: parseInt(JSON.parse(result))});        
       }
@@ -427,31 +404,7 @@ Mutation:{
     }       
   },
 
-  // CreateUser: async (_, args) => {
-  //   console.log("Create User args")
-  //   console.log(args)
-  //         const oneUser = await user.createUser(
-  //             args.username,
-  //             args.password,
-  //             args.dob,
-  //             args.phone, 
-  //             args.email, 
-  //             args.country, 
-  //             args.profilePic, 
-  //             args.bio, 
-  //             args.isPremium );
-          
-  //         if(oneUser.errors){
-  //                 return oneUser.errors[0].message
-  //         }
-  //         else{
-  //             return (oneUser);
-  //         }
-  // },
-
   CreateUser: async (_, args) => {
-    console.log("Create User args")
-    console.log(args)
           const oneUser = await user.createUser(
               args.username,
               args.password,
@@ -483,24 +436,11 @@ Mutation:{
   },
 
   Login: async(_,args)=>{
-    console.log("heyyyyyyyyyy");
-    // let session_exists = await client.exists("session");
-    // if(session_exists) {
-    //     let get_user = JSON.parse(await client.get("session"));
-    //     return "Already LoggedIn as " + get_user.username + "please logout to login again";
-    //   // res.status(403).json({"error":`Already LoggedIn as ${get_user.username}. please logout to login again`});
-    // }
-    console.log("Login Args")
-    console.log(args)
     const loggedIn = await user.checkUser(args.username,args.password);
     if(loggedIn.errors){     
         return loggedIn.errors[0].message
     }
     else{
-      // let session = await client.set(
-      //   "session",
-      //   JSON.stringify(loggedIn)
-      // );
       return (loggedIn);
     }
   },
