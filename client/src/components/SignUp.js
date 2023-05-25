@@ -136,15 +136,6 @@ const SignIn = () => {
 
           <div className="form-group">
             <label htmlFor="country" className='teamname' >Country</label>
-            {/* <input
-              type="text"
-              className="form-control"
-              id="country"
-              name="country"
-              value={formData.country}
-              onChange={handleInputChange}
-            /> */}
-
           <select class="form-select" id="country" name="country" value={formData.country} onChange={handleInputChange} >
               <option>select country</option>
               <option value="AF">Afghanistan</option>

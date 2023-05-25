@@ -45,7 +45,6 @@ const LeagueStats = () => {
     }
     )
 
-
     if (loading || LeagueLoading || AssitLoading) {
         return (
             <div class="spinner-border m-5" role="status">
