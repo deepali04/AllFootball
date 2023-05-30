@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import Accordion from 'react-bootstrap/Accordion';
 import queries from '../queries';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
