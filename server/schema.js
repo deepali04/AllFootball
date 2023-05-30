@@ -206,6 +206,25 @@ const typeDefs = gql`
     playerPhoto: String
   }
 
+  type TeamFixtures {
+    id: Int!
+    matchTimeZone: String
+    matchDate: String
+    leagueName : String
+    leagueLogo : String
+    homeTeamName: String
+    homeTeamID: String
+    homeTeamLogo: String
+    awayTeamName: String 
+    awayTeamID: String
+    awayTeamLogo: String
+    homeTeamGoals: Int
+    AwayTeamGoals: Int
+    halfTimeScore: String
+    FullTimeScore: String
+    winner: String
+  }
+
   type Game {
     _id: String!
     fixtureID: Int!
@@ -250,6 +269,7 @@ const typeDefs = gql`
     GetFollowedTeamsInfo(userId: String) : [FollowedTeams]
     GetLiveScore(fixtureId: Int): LiveFixture
     GetTeamSquad(id: Int): [TeamSquad]
+    GetTeamFixtures (id: Int): [TeamFixtures]
   }
 
   type Mutation {
