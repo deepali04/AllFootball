@@ -27,7 +27,8 @@ I'm using **Rapid API** for the live football data. It is a paid version. You ca
 
 - Access the landingpage/homepage (localhost: 3000)
 - You'll be able to see the scheculed matches (today's date), You can access all the information (league information, player information, team information) without signup/login. 
-- To play betting game you'll need to create and account and be a member:) Signup and then login to your accound. Predict match result and you'll be able to see your score. You'll receive coins if your prediction was correct. Once you have 200 coins you will be upgraded to premium user!!!
+- To play betting game you'll need to create and 
+t and be a member:) Signup and then login to your account. Predict match result and you'll be able to see your score. You'll receive coins if your prediction was correct. Once you have 200 coins you will be upgraded to premium user!!!
 - If you are a premium user, then you'll be able to follow your favorite team and players so that you can access their information easily.
 - You can also search players from your homepage.
 
