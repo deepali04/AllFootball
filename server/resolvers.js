@@ -289,6 +289,31 @@ module.exports = {
     return singleTeam;
   },
 
+  GetTeamSquad : async (_, args) => {
+
+    console.log(args.id)
+
+    const { data } = await axios.get("https://api-football-v1.p.rapidapi.com/v3/players/squads?team="+ args.id, config);
+
+    let responseData= data.response[0].players;
+    //console.log(responseData)
+    let squadList = [];
+
+    responseData.forEach(element => {
+
+      let singlePlayer ={
+        playerId : element.id,
+        playerName: element.name,
+        playerAge: element.age,
+        playerNumber: element.number,
+        playerPosition: element.position,
+        playerPhoto: element.photo
+      }  
+    squadList.push(singlePlayer);      
+    }); 
+  return squadList;
+},
+
 
     getGameByUserId : async (_, args) => {
       const gameData = await user.getGameByUserId(args.id);
@@ -310,8 +335,7 @@ module.exports = {
 
   GetUserById: async (_, args) => {
     const oneUser = await user.getUserById(args.id);
-    if(oneUser.errors){
-    
+    if(oneUser.errors){  
         return oneUser.errors[0].message
     }
     else{
@@ -376,7 +400,22 @@ module.exports = {
     }
     
     else return [0];   
-  }
+  },
+
+  GetLiveScore: async (_, args) => {
+
+    const {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v3/fixtures?id="+ args.fixtureID, config);     
+      if(data.response.length===0){
+        return null;
+      }
+
+      
+
+
+    
+    
+  },
+
 
 },
 
