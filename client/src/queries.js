@@ -177,6 +177,20 @@ const LOAD_TOP_LEAGUES = gql`
 `;
 
 
+const LOAD_TEAM_SQUAD = gql`
+    query GetTeamSquad($teamID: Int) {
+        GetTeamSquad (id: $teamID) {
+            playerId
+            playerName
+            playerAge
+            playerNumber
+            playerPosition
+            playerPhoto
+        }
+    }
+`;
+
+
 const LOAD_GAME_BY_ID = gql`
     query getGameById {
         getGameById {
@@ -472,4 +486,5 @@ export default {
     LOAD_FOLLOWED_TEAMS,
     LOAD_TEAM_FOLLOWING,
     LOAD_TEAM_UNFOLLOWING,
+    LOAD_TEAM_SQUAD
 };

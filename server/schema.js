@@ -164,6 +164,48 @@ const typeDefs = gql`
     nationality: String
   }
 
+  type LiveFixture {
+    id: Int!
+    leagueInfo : League
+    matchTimeZone: String
+    homeTeamName: String
+    homeTeamID: String
+    homeTeamLogo: String
+    awayTeamName: String
+    awayTeamID: String
+    awayTeamLogo: String
+    homeTeamGoals: Int
+    AwayTeamGoals: Int
+    halfTimeScore: String
+    FullTimeScore: String  
+  }
+
+
+  type LiveFixture {
+    id: Int!
+    leagueInfo : League
+    matchTimeZone: String
+    homeTeamName: String
+    homeTeamID: String
+    homeTeamLogo: String
+    awayTeamName: String 
+    awayTeamID: String
+    awayTeamLogo: String
+    homeTeamGoals: Int
+    AwayTeamGoals: Int
+    halfTimeScore: String
+    FullTimeScore: String  
+  }
+
+  type TeamSquad {
+    playerId : Int
+    playerName: String
+    playerAge: Int
+    playerNumber: Int
+    playerPosition: String 
+    playerPhoto: String
+  }
+
   type Game {
     _id: String!
     fixtureID: Int!
@@ -206,6 +248,8 @@ const typeDefs = gql`
     GetAllUsers: [User] 
     GetFollowedPlayersInfo(userId: String) : [FollowedPlayers]
     GetFollowedTeamsInfo(userId: String) : [FollowedTeams]
+    GetLiveScore(fixtureId: Int): LiveFixture
+    GetTeamSquad(id: Int): [TeamSquad]
   }
 
   type Mutation {
