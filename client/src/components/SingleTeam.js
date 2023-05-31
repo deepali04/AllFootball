@@ -9,6 +9,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import NotFoundPage from "./NotFound"
 //import Standings from "./Standings";
 import TeamSquad from './TeamSquad';
+import TeamFixtures from './TeamFixtures';
 
 const SingleTeam = () => {
     
@@ -80,7 +81,7 @@ const SingleTeam = () => {
                                 <TeamSquad></TeamSquad>
                             </Tab>
                             <Tab eventKey="third" title="Fixtures">
-                               
+                                <TeamFixtures></TeamFixtures>
                             </Tab>
                         </Tabs>
                     </div>
