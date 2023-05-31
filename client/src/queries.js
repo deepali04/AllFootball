@@ -191,6 +191,30 @@ const LOAD_TEAM_SQUAD = gql`
 `;
 
 
+const LOAD_TEAM_FIXTURES = gql`
+query GetTeamFixtures($teamID: Int) {
+    GetTeamFixtures  (id: $teamID){
+        id
+        matchTimeZone
+        matchDate
+        leagueName
+        leagueLogo
+        homeTeamName
+        homeTeamID 
+        homeTeamLogo
+        awayTeamName
+        awayTeamID 
+        awayTeamLogo
+        homeTeamGoals
+        AwayTeamGoals
+        halfTimeScore
+        FullTimeScore
+        winner
+    }
+}
+`;
+
+
 const LOAD_GAME_BY_ID = gql`
     query getGameById {
         getGameById {
@@ -486,5 +510,6 @@ export default {
     LOAD_FOLLOWED_TEAMS,
     LOAD_TEAM_FOLLOWING,
     LOAD_TEAM_UNFOLLOWING,
-    LOAD_TEAM_SQUAD
+    LOAD_TEAM_SQUAD,
+    LOAD_TEAM_FIXTURES
 };

@@ -420,12 +420,27 @@ module.exports = {
     let fixtureList = [];
     responseData.forEach(element => {
 
-      let winningTeam =  (element.teams.home.winner) ?  element.teams.home.name : ((element.teams.away.winner) ? element.teams.away.name : "Not decided" );
+      let winningTeam = 'Not Decided'
+      if(element.fixture.status.short==='FT'){
+        winningTeam =  (element.teams.home.winner) ?  element.teams.home.name : ((element.teams.away.winner) ? element.teams.away.name : 'Draw')
+      }
+      const matchTimeUTC = new Date(parseInt(element.fixture.timestamp) * 1000);
+      const matchTimeEST = new Date(matchTimeUTC.toLocaleString("en-US", {timeZone: "America/New_York"}));
+      let matchTimeESTString = matchTimeEST.toLocaleTimeString("en-US", {hour12: false});
+      matchTimeESTString = matchTimeESTString.slice(0,5) + " ET"; 
+
+      const dateObj = new Date(element.fixture.date);
+      const formattedDate = dateObj.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "short",
+        day: "numeric"
+      });
+
 
       let singleFixture ={
         id: element.fixture.id,
-        matchTimeZone: element.fixture.timezone,
-        matchDate: element.fixture.date,
+        matchTimeZone: matchTimeESTString,
+        matchDate: formattedDate,
         leagueName : element.league.name,
         leagueLogo : element.league.logo,
         homeTeamName: element.teams.home.name,
