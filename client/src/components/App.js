@@ -15,6 +15,7 @@ import SinglePlayer from './SinglePlayer';
 import SingleTeam from './SingleTeam';
 import Game from './Game';
 import TeamSquad from './TeamSquad';
+import TeamFixtures from './TeamFixtures';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -76,6 +77,7 @@ function App() {
                 <Route path='/player/:playerId' element={<SinglePlayer />} />
                 <Route path='/team/:teamId' element={<SingleTeam />} />
                 <Route path='/team/:teamId/squad' element={<TeamSquad />} />
+                <Route path='/team/:teamId/fixtures' element={<TeamFixtures />} />
                 <Route path='/game/' element={<Game />} />
                 <Route path='/score/' element={<Score />} />
                 <Route path='/following/' element={<Following />} />
@@ -131,6 +133,7 @@ else{
                 <Route path='/player/:playerId' element={<SinglePlayer />} />
                 <Route path='/team/:teamId' element={<SingleTeam />} />
                 <Route path='/team/:teamId/squad' element={<TeamSquad />} />
+                <Route path='/team/:teamId/fixtures' element={<TeamFixtures />} />
                 <Route path='/game/' element={<AccessForbidden />} />
                 <Route path='/score/' element={<AccessForbidden />} />
                 <Route path='/following/' element={<AccessForbidden />} />
