@@ -39,30 +39,116 @@ const TeamSquad = () => {
         const  squadInfo  = data
         console.log(squadInfo.GetTeamSquad)
         return(           
-            <div className='col-md-11'>
-                    <br></br>
-                    <div className='row'>
-                        {squadInfo.GetTeamSquad.map((player, index) => (
-                            <div className='col-md-3 mb-4' key={index}>
-                                <div className="card">
-                                <Link to={`/player/${player.playerId}`}>
-                                <div className="col-md-3 d-flex">
-                                    <img alt="SinglePlayerLogo" class="img-fluid SingleLeaguelogo" src={player.playerPhoto} />
-                                    <div className="ml-2 d-block">
-                                        <h5 className='card-title'>{player.playerName}</h5>
-                                        <p className='card-text'>{player.playerPosition}</p>
-                                        
+            <div className='col-md-12'>
+                <br></br>
+
+            <div className="wsk-cp-matches">
+            <br></br>
+            <h5 className='text-left'>Goalkeepers</h5>
+                <div className='row'>
+                        {squadInfo.GetTeamSquad
+                            .filter(player => player.playerPosition === 'Goalkeeper')
+                            .map((player, index) => (
+                                <div className='col-md-3 mb-4' key={index}>
+                                    <div className="wsk-cp-matches">
+                                        <Link to={`/player/${player.playerId}`}>
+                                        <div className="col-md-3 d-flex">
+                                            <img alt="SinglePlayerLogo" class="img-fluid SingleLeaguelogo" src={player.playerPhoto} />
+                                            <div className="ml-2 d-block">
+                                            <h5 className='tablehead'>{player.playerName}</h5>
+                                            <p className='tablehead'>{player.playerPosition}</p>
+                                            </div>
+                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
-                                </Link>
-                                    
-                                </div>
-                            </div>
                         ))}
-                    </div>
+                </div>
+                <br></br>
+
             </div>
 
 
+            <div className="wsk-cp-matches">
+            <br></br>
+            <h5 className='text-left'>Defenders</h5>
+                <div className='row'>
+                        {squadInfo.GetTeamSquad
+                            .filter(player => player.playerPosition === 'Defender')
+                            .map((player, index) => (
+                                <div className='col-md-3 mb-4' key={index}>
+                                    <div className="wsk-cp-matches">
+                                        <Link to={`/player/${player.playerId}`}>
+                                        <div className="col-md-3 d-flex">
+                                            <img alt="SinglePlayerLogo" class="img-fluid SingleLeaguelogo" src={player.playerPhoto} />
+                                            <div className="ml-2 d-block">
+                                            <h5 className='tablehead'>{player.playerName}</h5>
+                                            <p className='tablehead'>{player.playerPosition}</p>
+                                            </div>
+                                        </div>
+                                        </Link>
+                                    </div>
+                                </div>
+                        ))}
+                </div>
+                <br></br>
+
+            </div>
+
+
+            <div className="wsk-cp-matches">
+            <br></br>
+            <h5 className='text-left'>Midfielders</h5>
+                <div className='row'>
+                        {squadInfo.GetTeamSquad
+                            .filter(player => player.playerPosition === 'Midfielder')
+                            .map((player, index) => (
+                                <div className='col-md-3 mb-4' key={index}>
+                                    <div className="wsk-cp-matches">
+                                        <Link to={`/player/${player.playerId}`}>
+                                        <div className="col-md-3 d-flex">
+                                            <img alt="SinglePlayerLogo" class="img-fluid SingleLeaguelogo" src={player.playerPhoto} />
+                                            <div className="ml-2 d-block">
+                                            <h5 className='tablehead'>{player.playerName}</h5>
+                                            <p className='tablehead'>{player.playerPosition}</p>
+                                            </div>
+                                        </div>
+                                        </Link>
+                                    </div>
+                                </div>
+                        ))}
+                </div>
+                <br></br>
+
+            </div>
+
+
+            <div className="wsk-cp-matches">
+            <br></br>
+            <h5 className='text-left'>Attackers</h5>
+                <div className='row'>
+                        {squadInfo.GetTeamSquad
+                            .filter(player => player.playerPosition === 'Attacker')
+                            .map((player, index) => (
+                                <div className='col-md-3 mb-4' key={index}>
+                                    <div className="wsk-cp-matches">
+                                        <Link to={`/player/${player.playerId}`}>
+                                        <div className="col-md-3 d-flex">
+                                            <img alt="SinglePlayerLogo" class="img-fluid SingleLeaguelogo" src={player.playerPhoto} />
+                                            <div className="ml-2 d-block">
+                                            <h5 className='tablehead'>{player.playerName}</h5>
+                                            <p className='tablehead'>{player.playerPosition}</p>
+                                            </div>
+                                        </div>
+                                        </Link>
+                                    </div>
+                                </div>
+                        ))}
+                </div>
+                <br></br>
+
+            </div>
+            </div>
         )
     }
 
