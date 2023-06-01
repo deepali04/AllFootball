@@ -41,46 +41,86 @@ const Following = () => {
   } 
   
   if (data){
-
     const {GetFollowedPlayersInfo} = data
-
     console.log(GetFollowedPlayersInfo)
     return (
-    <div className="row justify-content-center" id='home'>
-       <p className="mr-4 tablehead">Your Player Following List</p>
-    <div className='col-md-11'>
+     <div class="col-md-12" id='home'>
+          <div className="row">
+                <div className="col-md-5">
+                  <div className="row mt-3  wsk-cp-matches">
+                        <h4 className="mt-2 mb-2" style={{ color: "white"}}>Player Following List</h4> <br></br> <br></br>
 
-
-    {GetFollowedPlayersInfo[0].playerId !== null ? 
-    (GetFollowedPlayersInfo.map((x) => {
-     return ( 
-          
-            <div className="wsk-cp-matches mt-3" >
-              <div className="col-md-10 d-flex">
-                  <img alt="playerlogo" class=" img-fluid leagueimg" src={x.playerImage} />
-                  <div className="d-block">
-                  <Link to={`/player/${x.playerId}`}>
-                    <p className="mr-4 tablehead">{x.playerName}</p>  
-                  </Link>
+                        {GetFollowedPlayersInfo[0].playerId !== null ? 
+                              (GetFollowedPlayersInfo.map((x) => {
+                                  return ( 
+                                    <div className="col-md-10 d-flex" >
+                                      <br></br><br></br>
+                                     <img alt="playerlogo" class="img-fluid SingleLeaguelogo" src={x.playerImage} />
+                                      <div className="d-block">
+                                                <Link to={`/player/${x.playerId}`}>
+                                                <br></br>
+                                                <p className="ml-2 tablehead">{x.playerName} </p>
+                                                </Link>
+                                      </div>
+                                    </div>
+                                    )
+                                })
+                              ): (
+                                    <div class="alert alert-danger" role="alert">
+                                        You don't follow any Player!!!
+                                    </div>
+                          )}
+                  
+                  
                   </div>
-              </div>
+
+                </div>
+
+
+
+                <div className="col-md-1"></div> {/* Add a column with width 1 to create space */}
+
+                
+
+
+
+
+                <div className="col-md-5">
+
+
+
+                <div className="row mt-3  wsk-cp-matches">
+                        <h4 className="mt-2 mb-2" style={{ color: "white"}}>Team Following List</h4> <br></br> <br></br>
+
+                        {GetFollowedPlayersInfo[0].playerId !== null ? 
+                              (GetFollowedPlayersInfo.map((x) => {
+                                  return ( 
+                                    <div className="col-md-10 d-flex" >
+                                     <img alt="playerlogo" class="img-fluid SingleLeaguelogo" src={x.playerImage} />
+                                      <div className="d-block">
+                                                <Link to={`/player/${x.playerId}`}>
+                                                <br></br>
+                                                <p className="ml-2 tablehead">{x.playerName} </p>
+                                                </Link>
+                                      </div>
+                                    </div>
+                                    )
+                                })
+                              ): (
+                                    <div class="alert alert-danger" role="alert">
+                                        You don't follow any Team!!!
+                                    </div>
+                          )}
+                  
+                  
+                  </div>
+
+                </div>
+
+
             </div>
-
-        )
-
-
-      })
-      ): (
-        <div class="alert alert-danger" role="alert">
-            You don't follow any Player!!!
-        </div>
-      )}
-      </div>
-        </div> 
+      </div> 
     )
-      
-     
-
   }
 
 };
