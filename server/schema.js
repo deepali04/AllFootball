@@ -116,6 +116,13 @@ const typeDefs = gql`
     penaltyMissed: Int  
     yellowCard: Int
     redCard: Int 
+    shots: Int
+    shotsOnTarget: Int
+    passes: Int
+    keyPasses: Int
+    accuracy: Int
+    dribblesAttempts: Int
+    dribblesSuccess: Int
   }
 
   type TeamManager {
@@ -225,6 +232,20 @@ const typeDefs = gql`
     winner: String
   }
 
+  type PlayerStats {
+    playerID : Int
+    playerRating: Float
+    teamName: String
+    leagueName : String
+    shots : Int
+    shotsOnTarget: Int
+    passes: Int
+    keyPasses:  Int
+    accuracy: Int
+    dribblesAttempts: Int
+    dribblesSuccess: Int
+  }
+
   type Game {
     _id: String!
     fixtureID: Int!
@@ -270,6 +291,7 @@ const typeDefs = gql`
     GetLiveScore(fixtureId: Int): LiveFixture
     GetTeamSquad(id: Int): [TeamSquad]
     GetTeamFixtures (id: Int): [TeamFixtures]
+    PlayerSeasonStats (id: Int): PlayerStats
   }
 
   type Mutation {
