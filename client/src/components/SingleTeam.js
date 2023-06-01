@@ -34,15 +34,6 @@ const SingleTeam = () => {
             enabled: false
         }
     );
-// const { loading:userLoading, error:userError, data:userData } = useQuery(
-//     queries.GET_USER_BY_ID, {
-//         fetchPolicy: 'cache-and-network',
-//         variables:{id: userId},
-//         manual: true,
-//         refetchOnWindowFocus: false,
-//         enabled: false
-//     }
-// )
 
     if (loading) {
         return (
@@ -364,22 +355,3 @@ const SingleTeam = () => {
 
 export default SingleTeam;
 
-// Nationality: "Norway"
-// age: 23
-// appearances: 31
-// assists: 7
-// firstName: "Erling"
-// goals: 35
-// isInjured: false
-// lastName: "Braut Haaland"
-// lineUps: 30
-// penaltyMissed: 0
-// penaltyScored: 7
-// playerHeight:"194 cm"
-// playerID: 1100
-// playerImage: "https://media-3.api-sports.io/football/players/1100.png"
-// playerPosition: "Attacker"
-// playerWeight: "88 kg"
-// season: 2022
-// teamLogo:"https://media-2.api-sports.io/football/teams/50.png"
-// teamName: "Manchester City"
