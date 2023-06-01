@@ -37,7 +37,7 @@ const SinglePlayer = () => {
         refetchOnWindowFocus: false,
         enabled: false
     }
-)
+    )
 
 const [mutate,{loading:followLoading, error:followError, data:followData }] = useMutation(queries.LOAD_PLAYER_FOLLOWING);
 const [unmutate,{loading:unfollowLoading, error:unfollowError, data:unfollowData }] = useMutation(queries.LOAD_PLAYER_UNFOLLOWING);
@@ -99,9 +99,7 @@ if(loading){
     )
 }
 
-// console.log(error)
 if(data){
-    // console.log(sessionToken.Login.isPremium )
     let followers_list;
     
     const {GetPlayerByID} = data
@@ -117,10 +115,10 @@ if(data){
     }
     
     let Flag = false
-      if(GetPlayerByID === null){
+      if(GetPlayerByID === null ){
         
         return(<div class="alert alert-danger" role="alert">
-        Player data not avaiable
+        Player data not available
         </div>)
          
       }
@@ -130,121 +128,120 @@ if(data){
             <div class="row justify-content-center" id='home'  >
                     <div className='col-md-11'>
                         <div className="wsk-cp-matches mt-3" >
-                                                                <div className="col-md-10 d-flex">
-                                                                    <img alt="playerlogo" class=" img-fluid leagueimg" src={GetPlayerByID.playerImage} />
-                                                                    <div className="d-block">
-                                                                   
-                                                                        <p className="mr-4 tablehead">{GetPlayerByID.playerName}</p>
-                                                                   
-    
-                                                                    <div className="d-flex"> 
-                                                                        <p className="ml-2 tablehead">{GetPlayerByID.teamName}</p>
-                                                                    </div>
+                            <div className="col-md-10 d-flex">
+                                <img alt="playerlogo" class="img-fluid SingleLeaguelogo" src={GetPlayerByID.playerImage} />
+                                <div className="d-block">
+                                    <br></br>
+                                    <h4 className="mr-4 tablehead">{GetPlayerByID.playerName}</h4>
+                                    <div className="d-flex"> 
+                                        <p className="ml-2 tablehead">{GetPlayerByID.teamName} | {GetPlayerByID.Nationality} </p>
+                                    </div>
                                                                     
-                                                                    <div className='d-flex'>
-                                                                    { sessionToken  && sessionToken.Login.isPremium ===true ?(
-                        <>
-                    
-                        { followers_list.includes(playerId.toString())?(
-                            <div className='col-md-4'>
-                            <button className='btn btn-success' onClick={(event) => handle_unfollow()}>UNFOLLOW</button>
-                            </div>
+                                    <div className='d-flex'>
+                                        { sessionToken  && sessionToken.Login.isPremium ===true ?(
+                                        <>                   
+                                            { followers_list.includes(playerId.toString())?(
+                                                <div className='col-md-4'>
+                                                <button className='btn btn-success' onClick={(event) => handle_unfollow()}>UNFOLLOW</button>
+                                                </div>
+                                                
+                                            )
+                                            : (
+                                            <div className='col-md-4'>
+                                                <button className='btn btn-success' onClick={(event) => handle_follow(event)}>FOLLOW</button>
+                                                </div>)
+                                            }
+                                        </>
+                                        )
                             
-                        )
-                        : (
-                        <div className='col-md-4'>
-                            <button className='btn btn-success' onClick={(event) => handle_follow(event)}>FOLLOW</button>
-                            </div>)
-                        }
-                        </>
-                    )
+                                        :(
+                                        <div>
+                            
+                                        </div>
+                                        )
                         
-                        
-                    :(
-                        <div>
-                        
-                    </div>
-                    )
-                    
-                    }
-                                                                    </div>
-                                                                </div>
-                                                                </div>
-                                        
-                                    
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-    
+                    
+                    
                     <div className='col-md-11'>
                         <div className='row'>
+                            <div className='col-md-3 mr-5 ml-2 p-0'>
+                                <div className="wsk-cp-matches " >
+                                    <div className='row'>
+                                        <h5 className='tablehead'>General Information</h5>
+                                    </div>                       
+                                    <div className='row mt-4'>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">Height</p>
+                                        </div>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">Weight</p>
+                                        </div>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">Age</p>
+                                        </div>
+                                    </div>
+                                    <div className='row'>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">{GetPlayerByID.playerHeight}</p>
+                                        </div>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">{GetPlayerByID.playerWeight}</p>
+                                        </div>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">{GetPlayerByID.age}</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr style={{background: "#D3D3D3", height: "2px", border: "none",opacity:0.1}}/>
+                                    
+                                    <div className='row'>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">Nationality</p>
+                                        </div>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">Position</p>
+                                        </div>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">Rating</p>
+                                        </div>
+                                    
+                                    </div>
+                                    <div className='row'>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">{GetPlayerByID.Nationality}</p>
+                                        </div>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">{GetPlayerByID.playerPosition}</p>
+                                        </div>
+                                        <div className='col-md-4'>
+                                            <p className="tablehead">{GetPlayerByID.playerRating}</p>
+                                        </div>
+        
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        
+                        
+                        
+                        
+                        {/* card 2 */}
+    
+                        
                         <div className='col-md-3 mr-5 ml-2 p-0'>
                             <div className="wsk-cp-matches " >
                                 <div className='row'>
-                                <p className='tablehead'>General Information</p>
-                            </div>
-                        
+                                    <h5 className='tablehead'>Highlights - 2022</h5>
+                                </div>                              
                                 <div className='row mt-4'>
                                     <div className='col-md-4'>
-                                        <p className="tablehead">Height</p>
-                                    </div>
-                                    <div className='col-md-4'>
-                                        <p className="tablehead">Weight</p>
-                                    </div>
-                                    <div className='col-md-4'>
-                                        <p className="tablehead">Age</p>
-                                    </div>
-                                </div>
-                                <div className='row'>
-                                    <div className='col-md-4'>
-                                        <p className="tablehead">{GetPlayerByID.playerHeight}</p>
-                                    </div>
-                                    <div className='col-md-4'>
-                                        <p className="tablehead">{GetPlayerByID.playerWeight}</p>
-                                    </div>
-                                    <div className='col-md-4'>
-                                        <p className="tablehead">{GetPlayerByID.age}</p>
-                                    </div>
-                                </div>
-                                <hr
-                                                                    style={{
-                                                                    background: "#D3D3D3",
-                                                                    height: "2px",
-                                                                    border: "none",
-                                                                    opacity:0.1
-                                                                    }}
-                                />
-                                <div className='row'>
-                                    <div className='col-md-4'>
-                                        <p className="tablehead">Nationality</p>
-                                    </div>
-                                    <div className='col-md-4'>
-                                        <p className="tablehead">Position</p>
-                                    </div>
-                                    
-                                </div>
-                                <div className='row'>
-                                    <div className='col-md-4'>
-                                        <p className="tablehead">{GetPlayerByID.Nationality}</p>
-                                    </div>
-                                    <div className='col-md-4'>
-                                        <p className="tablehead">{GetPlayerByID.playerPosition}</p>
-                                    </div>
-    
-                                </div>
-                            </div>
-    
-                        </div>
-    
-                        {/* card 2 */}
-    
-                        <div className='col-md-3  p-0'>
-                            <div className="wsk-cp-matches " >
-                                <div className='row'>
-                                    <p className='tablehead'>{GetPlayerByID.leagueName} 2022</p>
-                                </div>
-                                
-                                <div className='row mt-4'>
-                                <div className='col-md-4'>
                                         <p className="tablehead">Matches</p>
                                     </div>
                                     <div className='col-md-4'>
@@ -253,9 +250,8 @@ if(data){
                                     <div className='col-md-4'>
                                         <p className="tablehead">Assists</p>
                                     </div>
-                                    
-                                    
                                 </div>
+
                                 <div className='row '>
                                     <div className='col-md-4'>
                                         <p className="tablehead">{GetPlayerByID.appearances}</p>
@@ -268,15 +264,10 @@ if(data){
                                     </div>
                                     
                                 </div>
-                                <hr
-                                                                    style={{
-                                                                    background: "#D3D3D3",
-                                                                    height: "2px",
-                                                                    border: "none",
-                                                                    opacity:0.1
-                                                                    }}
-                                />
-    <div className='row'>
+                                
+                                <hr style={{ background: "#D3D3D3",height: "2px", border: "none", opacity:0.1}}/>
+                                
+                                <div className='row'>
                                     <div className='col-md-4'>
                                         <p className="tablehead">Penalty</p>
                                     </div>
@@ -301,21 +292,139 @@ if(data){
                                     </div>
                                 </div>
                             </div>
-                            
-    
                         </div>
-    
+
+
+
+                        
+
+
+                        {/* card 3 */}
+
+
+                        <div className='col-md-4 mr-5 ml-2 p-0'>
+                            <div className="wsk-cp-matches " >
+                                <div className='row'>
+                                    <h5 className='tablehead'>Player Statistics - 2022</h5>
+                                </div>                              
+                                <div className='row mt-4'>
+                                    <div className='col-md-6'>
+                                        <p className="tablehead">Appearances</p>                                     
+                                    </div>
+                                    <div className='col-md-6'>
+                                        <p className="tablehead">Lineups</p>
+                                    </div>
+                                </div>
+
+                                <div className='row '>
+                                    <div className='col-md-6'>
+                                        <p className="tablehead">{GetPlayerByID.appearances}</p>
+                                    </div>
+                                    <div className='col-md-6'>
+                                        <p className="tablehead">{GetPlayerByID.lineUps}</p>
+                                    </div>                                    
+                                </div>
+                                
+                                <hr style={{ background: "#D3D3D3",height: "2px", border: "none", opacity:0.1}}/>
+
+
+                                <div className='row mt-4'>
+                                    <div className='col-md-6'>
+                                        <p className="tablehead">Dribbles Attempted</p>                                     
+                                    </div>
+                                    <div className='col-md-6'>
+                                        <p className="tablehead">Successful Dribbles</p>
+                                    </div>
+                                </div>
+
+                                <div className='row '>
+                                    <div className='col-md-6'>
+                                        <p className="tablehead">{GetPlayerByID.dribblesAttempts}</p>
+                                    </div>
+                                    <div className='col-md-6'>
+                                        <p className="tablehead">{GetPlayerByID.dribblesSuccess}</p>
+                                    </div>                               
+                                </div>
+                                
+                                
+
+                                <hr style={{ background: "#D3D3D3",height: "2px", border: "none", opacity:0.1}}/>
+
+                                <div className='row mt-4'>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">Passes</p>                                     
+                                    </div>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">Key Passes</p>
+                                    </div>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">Accuracy</p>
+                                    </div>
+                                </div>
+
+                                <div className='row '>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">{GetPlayerByID.shots}</p>
+                                    </div>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">{GetPlayerByID.shotsOnTarget}</p>
+                                    </div>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">{GetPlayerByID.accuracy}</p>
+                                    </div>                                    
+                                </div>
+
+
+                                <hr style={{ background: "#D3D3D3",height: "2px", border: "none", opacity:0.1}}/>
+
+
+                                <div className='row mt-4'>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">Shots</p>                                     
+                                    </div>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">Shots on Target</p>
+                                    </div>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">Player Rating</p>
+                                    </div>
+                                </div>
+
+                                <div className='row '>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">{GetPlayerByID.shots}</p>
+                                    </div>
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">{GetPlayerByID.shotsOnTarget}</p>
+                                    </div> 
+                                    <div className='col-md-4'>
+                                        <p className="tablehead">{GetPlayerByID.playerRating}</p>
+                                    </div>                                    
+                                </div>
+
+                                
+
+
+
+
+
+
+                            </div>
+                        </div>
+
                         </div>
                     </div>
+
+
                     
-                    
-    
-    
-    
-    
+                                        
+
+
+
+
+
             </div>
-                
-          
+  
         )
         
       }
@@ -326,22 +435,6 @@ if(data){
 
 export default SinglePlayer;
 
-// Nationality: "Norway"
-// age: 23
-// appearances: 31
-// assists: 7
-// firstName: "Erling"
-// goals: 35
-// isInjured: false
-// lastName: "Braut Haaland"
-// lineUps: 30
-// penaltyMissed: 0
-// penaltyScored: 7
-// playerHeight:"194 cm"
-// playerID: 1100
-// playerImage: "https://media-3.api-sports.io/football/players/1100.png"
-// playerPosition: "Attacker"
-// playerWeight: "88 kg"
-// season: 2022
-// teamLogo:"https://media-2.api-sports.io/football/teams/50.png"
-// teamName: "Manchester City"
+
+
+
