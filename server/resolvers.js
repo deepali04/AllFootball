@@ -169,7 +169,9 @@ module.exports = {
   },
 
   GetPlayerByID : async (_, args) => {
-      const {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v3/players?id="+ args.playerId+"&season="+ args.season, config);
+      console.log("I'm here")
+      console.log(args.playerId)
+      let {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v3/players?id="+ args.playerId +"&season="+ args.season, config);
       
       if(data.response.length===0){
         return null;
@@ -199,9 +201,50 @@ module.exports = {
           penaltyMissed: singlePlayerData.statistics[0].penalty.missed,
           yellowCard: singlePlayerData.statistics[0].cards.yellow,
           redCard: singlePlayerData.statistics[0].cards.red
-        }                
-      return singlePlayer;
+        }  
+        
+        let response = await axios.get("https://api-football-v1.p.rapidapi.com/v2/players/player/"+ args.playerId, config);
+        let newData= response.data;
+
+        let playerStatData = newData.api.players[0];
+
+        singlePlayer.shots = playerStatData.shots.total,
+        singlePlayer.shotsOnTarget = playerStatData.shots.on,
+        singlePlayer.passes = playerStatData.passes.total,
+        singlePlayer.keyPasses =  playerStatData.passes.key,
+        singlePlayer.accuracy = playerStatData.passes.accuracy,
+        singlePlayer.dribblesAttempts = playerStatData.dribbles.attempts,
+        singlePlayer.dribblesSuccess = playerStatData.dribbles.success
+
+        //console.log(singlePlayer)
+
+        return singlePlayer;
   },
+
+
+  PlayerSeasonStats : async (_, args) => {
+    console.log(args.id)
+    const {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v2/players/player/"+ args.id, config);
+    
+    //console.log(data.api.players[0])
+
+    let singlePlayerData = data.api.players[0];
+      let singlePlayer = {
+        playerID: singlePlayerData.player_id,
+        playerRating: singlePlayerData.rating,
+        teamName: singlePlayerData.team_name,
+        leagueName : singlePlayerData.league,
+        shots : singlePlayerData.shots.total,
+        shotsOnTarget: singlePlayerData.shots.on,
+        passes: singlePlayerData.passes.total,
+        keyPasses:  singlePlayerData.passes.key,
+        accuracy: singlePlayerData.passes.accuracy,
+        dribblesAttempts: singlePlayerData.dribbles.attempts,
+        dribblesSuccess: singlePlayerData.dribbles.success,
+      } 
+    console.log(singlePlayer);               
+    return singlePlayer;
+},
 
   TopAssistsByLeague : async (_, args) => {
     let topScorersList=[]; 
