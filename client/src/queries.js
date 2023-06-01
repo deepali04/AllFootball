@@ -124,6 +124,13 @@ const LOAD_PLAYER_BY_ID_INFO = gql`
                 penaltyMissed
                 yellowCard
                 redCard
+                shots
+                shotsOnTarget
+                passes
+                keyPasses
+                accuracy
+                dribblesAttempts
+                dribblesSuccess
 
             }
         }
@@ -225,6 +232,25 @@ const LOAD_GAME_BY_ID = gql`
             homeTeam,
             betField,
             result
+        }
+    }
+`;
+
+
+const LOAD_PLAYER_STATS = gql`
+    query PlayerSeasonStats($playerID: Int) {
+        PlayerSeasonStats (id: $playerID) {
+            playerID
+            playerRating
+            teamName
+            leagueName
+            shots
+            shotsOnTarget
+            passes
+            keyPasses
+            accuracy
+            dribblesAttempts
+            dribblesSuccess
         }
     }
 `;
@@ -511,5 +537,6 @@ export default {
     LOAD_TEAM_FOLLOWING,
     LOAD_TEAM_UNFOLLOWING,
     LOAD_TEAM_SQUAD,
-    LOAD_TEAM_FIXTURES
+    LOAD_TEAM_FIXTURES,
+    LOAD_PLAYER_STATS
 };

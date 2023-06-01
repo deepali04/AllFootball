@@ -54,7 +54,7 @@ function App() {
 
                   <Navbar.Brand>
                     <Link to="/">
-                      <span className="navbar-brand">AllFootball</span>
+                      <span className="navbar-brand">⚽AllFootball⚽</span>
                     </Link>
                   </Navbar.Brand>
                   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -110,7 +110,7 @@ else{
 
                   <Navbar.Brand>
                     <Link to="/">
-                      <span className="navbar-brand">AllFootball</span>
+                      <span className="navbar-brand">⚽AllFootball⚽</span>
                     </Link>
                   </Navbar.Brand>
                   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
