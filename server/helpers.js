@@ -59,21 +59,12 @@ const dateformat = function error_handling_for_dateformat(input_as_string){
   if((user_year >= min_year || user_year >= max_year)) throw 'User must be 18 years old';
 }
 const email_check = async function email_check(email){
-  try{
-    const valid = await validator(email); //{ result: Boolean, failReason: String || null }
-    if(valid.result){
-      //do nothing
-    }
-    else{
-      // console.log(valid)
-      return valid
-    }
-  }catch(e){
-    if(e){
-      return e;
-    }
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+  {
+    return (true)
   }
-  
+    alert("You have entered an invalid email address!")
+    return (false)
 }
 
 const phone_check = function phone_handling (phone)
