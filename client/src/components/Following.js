@@ -49,6 +49,7 @@ const Following = () => {
                 <div className="col-md-5">
                   <div className="row mt-3  wsk-cp-matches">
                         <h4 className="mt-2 mb-2" style={{ color: "white"}}>Player Following List</h4> <br></br> <br></br>
+                        <hr style={{ background: "#D3D3D3",height: "2px", border: "none", opacity:0.1}}/>    
 
                         {GetFollowedPlayersInfo[0].playerId !== null ? 
                               (GetFollowedPlayersInfo.map((x) => {
@@ -91,6 +92,7 @@ const Following = () => {
 
                 <div className="row mt-3  wsk-cp-matches">
                         <h4 className="mt-2 mb-2" style={{ color: "white"}}>Team Following List</h4> <br></br> <br></br>
+                        <hr style={{ background: "#D3D3D3",height: "2px", border: "none", opacity:0.1}}/>    
 
                         {GetFollowedPlayersInfo[0].playerId !== null ? 
                               (GetFollowedPlayersInfo.map((x) => {
