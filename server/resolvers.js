@@ -370,7 +370,7 @@ module.exports = {
   },
 
   GetUserById: async (_, args) => {
-    const oneUser = await user.getUserById(args.id);
+    const newUser = await user.getUserById(args.id);
     if(oneUser.errors){  
         return oneUser.errors[0].message
     }
@@ -528,23 +528,13 @@ Mutation:{
   },
 
   CreateUser: async (_, args) => {
-          const oneUser = await user.createUser(
-              args.username,
-              args.password,
-              args.dob,
-              args.phone, 
-              args.email, 
-              args.country, 
-              args.profilePic, 
-              args.bio, 
-              args.isPremium );
-          
-          if(oneUser.errors){
-                  return oneUser.errors[0].message
-          }
-          else{
-              return (oneUser);
-          }
+    const newUser = await user.createUser(args.username, args.password, args.dob, args.phone, args.email, args.country, args.profilePic, args.bio, args.isPremium);       
+    if(newUser.errors){
+      return newUser.errors[0].message
+    }   
+    else{
+      return (newUser);
+    }
   },
 
   DeleteUser: async(_,args)=>{

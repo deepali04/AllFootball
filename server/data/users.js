@@ -48,28 +48,20 @@ const deleteUser = async (userId) => {
       }
 };
 
-const createUser = async (
-  username,
-  password,
-  dob, 
-  phone, 
-  email, 
-  country, 
-  profilePic, 
-  bio
-) => {
+const createUser = async (username, password, dob, phone, email, country, profilePic, bio) => {
+    
+  if(validation.createUser_validations(username,password));
+
+  const hashed_password = await bcrypt.hash(password, saltRounds);
+  if(validation.phone_check(phone));
 
 
-if(validation.createUser_validations(username,password));
-const hashed_password = await bcrypt.hash(password, saltRounds);
-if(validation.phone_check(phone));
-const check = await validation.email_check(email);
-if(check){
-  if(!check.result){
-
-    throw "Email Address is not valid!"
+  const check = await validation.email_check(email);
+  if(check){
+    if(!check.result){
+      throw "Email Address is not valid!"
+      }
   }
-}
 
 const dateObj = new Date(dob);
 
@@ -119,6 +111,9 @@ const data = await getUserById(created);
 
 return data;
 };
+
+
+
 
 const checkUser = async (username, password) => 
 { 
