@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useApolloClient } from '@apollo/client';
 import Swal from 'sweetalert2';
 
-const Signout = () => {
+const Signout = ({ title }) => {
+
+  React.useEffect(() => {
+    document.title = title; // Set the page title
+  }, [title]);
   const navigate = useNavigate();
   const client = useApolloClient();
 

@@ -5,7 +5,11 @@ import queries from '../queries';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const SignIn = () => {
+const SignIn = ({ title }) => {
+
+  React.useEffect(() => {
+    document.title = title; // Set the page title
+  }, [title]);
 
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
