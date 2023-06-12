@@ -12,6 +12,7 @@ import TeamSquad from './TeamSquad';
 import TeamFixtures from './TeamFixtures';
 
 const SingleTeam = () => {
+
     
     const sessionToken = JSON.parse(sessionStorage.getItem('sessionToken'));
     let userId;

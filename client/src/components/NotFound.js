@@ -1,6 +1,10 @@
 import React from 'react';
 
-const NotFoundPage = () => {
+const NotFoundPage = ({ title }) => {
+
+    React.useEffect(() => {
+        document.title = title; // Set the page title
+      }, [title]);
     return (
         <div>
             <h1>404 Page Not Found</h1>

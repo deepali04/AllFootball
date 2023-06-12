@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client";
 import NotFoundPage from "./NotFound"
 
 const TeamSquad = () => {
+
     console.log("I'm in squad rn")
     let { teamId } = useParams();
     teamId = parseInt(teamId);

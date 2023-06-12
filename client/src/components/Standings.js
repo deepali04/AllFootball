@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client";
 import NotFoundPage from "./NotFound"
 
 const Standings = () => {
+
     let { leagueId } = useParams();
     leagueId = parseInt(leagueId)
 

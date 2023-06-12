@@ -7,7 +7,11 @@ import { useQuery,useMutation } from "@apollo/client";
 import NotFoundPage from "./NotFound"
 import {Card} from 'react-bootstrap'
 
-const SinglePlayer = () => {
+const SinglePlayer = ({ title }) => {
+
+    React.useEffect(() => {
+        document.title = title; // Set the page title
+      }, [title]);
     const sessionToken = JSON.parse(sessionStorage.getItem('sessionToken'));
     let userId;
     if(sessionToken){

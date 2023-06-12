@@ -10,7 +10,11 @@ import Tabs from 'react-bootstrap/Tabs';
 import Standings from "./Standings";
 import LeagueStats from "./LeagueStats";
 
-const SingleLeague = () => {
+const SingleLeague = ({ title }) => {
+
+    React.useEffect(() => {
+        document.title = title; // Set the page title
+      }, [title]);
 
     let { leagueId } = useParams();
 
