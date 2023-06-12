@@ -11,7 +11,11 @@ import Accordion from 'react-bootstrap/Accordion';
 import Search from './Search';
 const moment = require('moment');
 
-function Landing() {
+function Landing({ title }) {
+
+  React.useEffect(() => {
+    document.title = title; // Set the page title
+  }, [title]);
   // console.log(id)
   const [searchTerm, setSearchTerm] = useState('Kevi');
   let now = new Date();

@@ -9,7 +9,11 @@ import Swal from 'sweetalert2';
 
 
 const moment = require('moment');
-const Following = () => {
+const Following = ({ title }) => {
+
+  React.useEffect(() => {
+    document.title = title; // Set the page title
+  }, [title]);
   let resultArray = []
     const sessionToken = JSON.parse(sessionStorage.getItem('sessionToken'));
     let userID =sessionToken.Login._id;

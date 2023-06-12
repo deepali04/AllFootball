@@ -8,7 +8,11 @@ import { useQuery,useMutation} from "@apollo/client";
 import NotFoundPage from "./NotFound"
 import {Card} from 'react-bootstrap'
 const moment = require('moment');
-const Game = () => {
+const Game = ({ title }) => {
+
+  React.useEffect(() => {
+    document.title = title; // Set the page title
+  }, [title]);
 
   const sessionToken = JSON.parse(sessionStorage.getItem('sessionToken'));
     let now = new Date();
