@@ -1,21 +1,19 @@
-//You can add and export any helper functions you want here. If you aren't using any, then you can just leave this file as is.
 const {ObjectId} = require('mongodb');
-const validator = require("node-deep-email-validator");
-const validatePhoneNumber = require('validate-phone-number-node-js');
 
-const string = function error_handling_for_string(input_string,input_name){
+const string = function error_handling_for_string(input_string, input_name){
   if(!input_string) throw 'Please provide ' + input_name;
   if (typeof(input_string) !== 'string' || typeof(input_string) ==='undefined') throw input_name +' must be a string';
       if (input_string.trim().length === 0)
         throw input_name +' cannot be an empty string or string with just spaces';
 }
+
 const valid_id = function error_handling_for_id(input_id,input_para){
-    if (!input_id) throw 'You must provide an ' +input_para;
-    if (typeof(input_id) !== 'string' || typeof(input_id)==='undefined') throw input_para+' must be a string';
+    if (!input_id) throw 'You must provide an ' + input_para;
+    if (typeof(input_id) !== 'string' || typeof(input_id)==='undefined') throw input_para +' must be a string';
     if (input_id.trim().length === 0)
-      throw input_para+' cannot be an empty string or just spaces';
+      throw input_para +' cannot be an empty string or just spaces';
     
-    if (!ObjectId.isValid(input_id.trim())) throw 'Invalid object '+input_para;
+    if (!ObjectId.isValid(input_id.trim())) throw 'Invalid object '+ input_para; 
 }
 const createUser_validations = function createUser_validations(input_username, input_password){
 
@@ -33,52 +31,44 @@ const createUser_validations = function createUser_validations(input_username, i
     if(!password_format.test(input_password)) throw 'Password should contain at least one uppercase character, at least one number and at least one special character';
 
 }
-const dateformat = function error_handling_for_dateformat(input_as_string){
-  console.log(input_as_string)
-  let date_regex = /^\d{2}\/\d{2}\/\d{4}$/;
-  if(input_as_string.trim().match(date_regex)===null){
-      throw 'Please enter valid date format .i.e mm/dd/yyyy';
-  }
-  let date_arr = input_as_string.trim().split('/');
-  if(parseInt(date_arr[0])>12) throw 'Please enter valid month';
-  let no_of_days = [31,28,31,30,31,30,31,31,30,31,30,31];
-  if(parseInt(date_arr[0])===1 || parseInt(date_arr[0]) >=2){
-    if(parseInt(date_arr[1])>no_of_days[parseInt(date_arr[0])-1]){
-      throw 'Please enter a valid date';
-    }
-  }
-  else{
+const dateformat = function error_handling_for_dateformat(date){
+  const dateRegex = /^(?:(?:31(\/)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
+
+  if (!dateRegex.test(date)) {
     throw 'Please enter a valid date';
   }
-  let max_year = new Date().getFullYear();    
-  let min_year = 2005;
-  let user_year = parseInt(date_arr[2]);
-  if((user_year >= min_year || user_year >= max_year)) throw 'User must be 18 years old';
-}
-const email_check = async function email_check(email){
+ 
+  const today = new Date();
+  const dateObj = new Date(date);
+  let age = today.getFullYear() - dateObj.getFullYear();
+  const monthDiff = today.getMonth() - dateObj.getMonth();
 
-
-  
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
-  {
-    return (true)
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dateObj.getDate())) {
+    age--;
   }
-    alert("You have entered an invalid email address!")
-    return (false)
+
+  if (age < 18) {
+    throw 'User must be at least 18 years old!';
+  }
+}
+
+const email_check = function email_check(email){
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    throw "Please provide a valid email ID!"
+  }
 }
 
 const phone_check = function phone_handling (phone)
 {
-
-    let format = /[` !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-  
-    const phone_valid =  validatePhoneNumber.validate(phone); 
-    if(!phone_valid) throw "Please provide a valid phone number"
+  const phoneNumberRegex = /^\d{10}$/;
+  if (!phoneNumberRegex.test(phone)) {
+    throw "Please provide a valid phone Number!"
+  }
 }
 
 
-module.exports = {
-   
+module.exports = {  
     valid_id,
     createUser_validations,
     dateformat,

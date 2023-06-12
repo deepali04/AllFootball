@@ -529,10 +529,12 @@ Mutation:{
 
   CreateUser: async (_, args) => {
     const newUser = await user.createUser(args.username, args.password, args.dob, args.phone, args.email, args.country, args.profilePic, args.bio, args.isPremium);       
-    if(newUser.errors){
+    //console.log(newUser.errors)
+    if(newUser.errors){    
       return newUser.errors[0].message
     }   
     else{
+      console.log("here at 537- resolvers")
       return (newUser);
     }
   },

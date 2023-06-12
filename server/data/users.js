@@ -28,7 +28,7 @@ const getUserById = async (userId) => {
   userId = userId.trim();
   const usersCollection = await users();
   const users_data = await usersCollection.findOne({_id: new ObjectId(userId)});
-  if(users_data === null) throw {error:'No user found with '+userId, statusCode:404};
+  if(users_data === null) throw {error:'No user found with '+ userId, statusCode:404};
 
   return users_data; 
 };
@@ -51,21 +51,12 @@ const deleteUser = async (userId) => {
 const createUser = async (username, password, dob, phone, email, country, profilePic, bio) => {
     
   if(validation.createUser_validations(username,password));
-
   const hashed_password = await bcrypt.hash(password, saltRounds);
   if(validation.phone_check(phone));
-
-
-  const check = await validation.email_check(email);
-  if(check){
-    if(!check.result){
-      throw "Email Address is not valid!"
-      }
-  }
+  if(validation.email_check(email));
 
 const dateObj = new Date(dob);
 
-// format the date in the "MM/dd/yyyy" format
 const formattedDate = dateObj.toLocaleDateString('en-US', {
   month: '2-digit',
   day: '2-digit',
@@ -76,6 +67,7 @@ if(validation.dateformat(formattedDate));
 // if(validation.string(bio,"Bio"));
 if(validation.string(country,"Country"));
 let createuser = {
+
   username:username.trim().toLowerCase(),
   password: hashed_password,
   dob:dob.trim() || "Not Provided", 
@@ -91,7 +83,7 @@ let createuser = {
 };
 
 const usersCollection = await users();
-const users_all = await usersCollection.find({}, {projection: {_id: 1, username: 1}}).toArray();
+const users_all = await usersCollection.find({}, {projection: {_id: 1, username: 1, email:1, phone:1}}).toArray();
 if(users_all.length===0){
   //do nothing
 }
@@ -100,6 +92,12 @@ else{
     if(element.username.toLowerCase() === username.trim().toLowerCase()){
       throw {error:'Username already exists !',statusCode:400}
     }
+    if(element.email.toLowerCase() === email.trim().toLowerCase()){
+      throw {error:'Email already exists !',statusCode:400}
+    }
+    // if(element.phone === phone){
+    //   throw {error:'Contact Number already exists !',statusCode:400}
+    // }
   });
 }
 
@@ -231,6 +229,7 @@ const deleteTeamFollowing = async (userId,teamID) => {
   }
 
 };
+
 const deletePlayerFollowing = async (userId,playerID) => {
 
   let key = await client.exists(userId +"_PlayerFollowing");

@@ -8,7 +8,11 @@ import NotFoundPage from "./NotFound"
 import Swal from 'sweetalert2';
 
 const moment = require('moment');
-const Score = () => {
+const Score = ({ title }) => {
+
+    React.useEffect(() => {
+        document.title = title; // Set the page title
+      }, [title]);
     const sessionToken = JSON.parse(sessionStorage.getItem('sessionToken'));
     let userID =sessionToken.Login._id;
 console.log(userID)
