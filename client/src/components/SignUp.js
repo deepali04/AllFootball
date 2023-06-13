@@ -75,22 +75,31 @@ const SignIn = ({ title }) => {
   };
 
   return (
-    <div class="col-md-4  offset-4 align-items-center ">
+    <div class="col-md-6 offset-3 align-items-center ">
+      <br></br>
       <div className="wsk-cp-matches" >
+      <h5>Sign Up</h5>
+        <hr style={{ background: "#D3D3D3",height: "2px", border: "none", opacity:0.5}}/>
+        <br></br>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="username" className='teamname'>Username</label>
-            <input
-              type="text"
-              className="form-control"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleInputChange}
-            />
+          <div className="form-group row">
+              <label htmlFor="username" className="col-sm-2 col-form-label teamname">Username</label>
+              <div className="col-sm-9">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="username"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleInputChange}
+                />
+              </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="password" className='teamname'>Password</label>
+
+
+          <div className="form-group row">
+            <label htmlFor="password" className='col-sm-2 col-form-label teamname'>Password</label>
+            <div className="col-sm-9">
             <input
               type="password"
               className="form-control"
@@ -99,10 +108,12 @@ const SignIn = ({ title }) => {
               value={formData.password}
               onChange={handleInputChange}
             />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="dob" className='teamname' >Date of Birth</label>
+          <div className="form-group row">
+            <label htmlFor="dob" className='col-sm-2 col-form-label teamname' >BirthDate</label>
+            <div className="col-sm-9">
             <DatePicker
               id="dob"
               className="form-control"
@@ -113,11 +124,13 @@ const SignIn = ({ title }) => {
               scrollableYearDropdown
               yearDropdownItemNumber={100}
             />
+            </div>
           </div>
           
 
-          <div className="form-group">
-            <label htmlFor="phone" className='teamname' >Phone</label>
+          <div className="form-group row">
+            <label htmlFor="phone" className='col-sm-2 col-form-label teamname' >Phone</label>
+            <div className="col-sm-9">
             <input
               type="text"
               className="form-control"
@@ -126,10 +139,12 @@ const SignIn = ({ title }) => {
               value={formData.phone}
               onChange={handleInputChange}
             />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="email" className='teamname' >Email</label>
+          <div className="form-group row">
+            <label htmlFor="email" className='col-sm-2 col-form-label teamname' >Email</label>
+            <div className="col-sm-9">
             <input
               type="text"
               className="form-control"
@@ -138,10 +153,12 @@ const SignIn = ({ title }) => {
               value={formData.email}
               onChange={handleInputChange}
             />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="country" className='teamname' >Country</label>
+          <div className="form-group row">
+            <label htmlFor="country" className='col-sm-2 col-form-label teamname' >Country</label>
+            <div className="col-sm-9">
           <select class="form-select" id="country" name="country" value={formData.country} onChange={handleInputChange} >
               <option>select country</option>
               <option value="AF">Afghanistan</option>
@@ -398,9 +415,11 @@ const SignIn = ({ title }) => {
               <option value="ZW">Zimbabwe</option>
           </select>
           </div>
+          </div>
 
-          <div className="form-group">
-            <label htmlFor="bio" className='teamname' >Bio</label>
+          <div className="form-group row">
+            <label htmlFor="bio" className='col-sm-2 col-form-label teamname' >Bio</label>
+            <div className="col-sm-9">
             <input
               type="text"
               className="form-control"
@@ -409,10 +428,13 @@ const SignIn = ({ title }) => {
               value={formData.bio}
               onChange={handleInputChange}
             />
+            </div>
           </div>
+          <br></br>
           <button type="submit" className="btn btn-primary">
             Sign Up
           </button>
+          <br></br><br></br>
         </form>
       </div>
     </div>
