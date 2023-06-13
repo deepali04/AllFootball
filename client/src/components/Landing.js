@@ -17,7 +17,7 @@ function Landing({ title }) {
     document.title = title; // Set the page title
   }, [title]);
   // console.log(id)
-  const [searchTerm, setSearchTerm] = useState('Kevi');
+  const [searchTerm, setSearchTerm] = useState('bruy');
   let now = new Date();
   let dateString = moment(now).format('YYYY-MM-DD');
   // console.log(dateString)
