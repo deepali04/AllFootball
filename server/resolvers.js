@@ -169,8 +169,6 @@ module.exports = {
   },
 
   GetPlayerByID : async (_, args) => {
-      console.log("I'm here")
-      console.log(args.playerId)
       let {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v3/players?id="+ args.playerId +"&season="+ args.season, config);
       
       if(data.response.length===0){
@@ -223,7 +221,6 @@ module.exports = {
 
 
   PlayerSeasonStats : async (_, args) => {
-    console.log(args.id)
     const {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v2/players/player/"+ args.id, config);
     
     //console.log(data.api.players[0])
@@ -241,8 +238,7 @@ module.exports = {
         accuracy: singlePlayerData.passes.accuracy,
         dribblesAttempts: singlePlayerData.dribbles.attempts,
         dribblesSuccess: singlePlayerData.dribbles.success,
-      } 
-    console.log(singlePlayer);               
+      }            
     return singlePlayer;
 },
 
@@ -327,8 +323,6 @@ module.exports = {
   },
 
   GetTeamSquad : async (_, args) => {
-
-    console.log(args.id)
 
     const { data } = await axios.get("https://api-football-v1.p.rapidapi.com/v3/players/squads?team="+ args.id, config);
 
@@ -423,8 +417,8 @@ module.exports = {
       }
 
       newArray.forEach(element => {
-        console.log(element.teamID)
-        console.log(typeof(element.teamID))
+        // console.log(element.teamID)
+        // console.log(typeof(element.teamID))
       });
       
       if(newArray.length!== 0) {
@@ -534,7 +528,7 @@ Mutation:{
       return newUser.errors[0].message
     }   
     else{
-      console.log("here at 537- resolvers")
+      //console.log("here at 537- resolvers")
       return (newUser);
     }
   },
