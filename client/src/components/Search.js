@@ -16,6 +16,7 @@ function Search(props) {
         >
           <label>
             <span className='searchbar'> Search Players: &nbsp;
+            <br></br><br></br>
             <input
               autoComplete='off'
               type='text'
