@@ -219,7 +219,6 @@ module.exports = {
         return singlePlayer;
   },
 
-
   PlayerSeasonStats : async (_, args) => {
     const {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v2/players/player/"+ args.id, config);
     
@@ -240,7 +239,7 @@ module.exports = {
         dribblesSuccess: singlePlayerData.dribbles.success,
       }            
     return singlePlayer;
-},
+  },
 
   TopAssistsByLeague : async (_, args) => {
     let topScorersList=[]; 
