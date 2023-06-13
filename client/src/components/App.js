@@ -125,8 +125,8 @@ else{
 
             <div className='App-body'>
               <Routes>
-                <Route path='/' element={<Landing />} />
-                <Route path='/home' element={<Landing />} />
+              <Route path='/' element={<Landing title="All Football"/>} />
+                <Route path='/home' element={<Landing title="All Football"/>} />
                 <Route path='/league/:leagueId' element={<SingleLeague />} />
                 <Route path='/league/:leagueId/standings' element={<Standings />} />
                 <Route path='/league/:leagueId/stats' element={<LeagueStats />} />
