@@ -58,7 +58,11 @@ const SignIn = ({ title }) => {
 
   return (
     <div class="col-md-4  offset-4 align-items-center ">
+      <br></br><br></br><br></br>
       <div className="wsk-cp-matches " >
+        <h5>Login</h5>
+        <hr style={{ background: "#D3D3D3",height: "2px", border: "none", opacity:0.5}}/>
+        <br></br>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="username" className='teamname'>Username</label>
@@ -81,12 +85,14 @@ const SignIn = ({ title }) => {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              
+                
             />
+            <br></br>
           </div>
           <button type="submit" className="btn btn-primary">
             Log In
           </button>
+          <br></br><br></br>
         </form>
       </div>
     </div>
