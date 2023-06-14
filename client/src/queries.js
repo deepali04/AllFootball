@@ -423,7 +423,6 @@ const LOGIN = gql `
 const LOAD_PLAYER_FOLLOWING = gql`
 mutation AddPlayerFollowing($userId:ID!,$PlayerID: ID!){
         AddPlayerFollowing(userId:$userId,PlayerID:$PlayerID){
-
             _id
             username
             password
