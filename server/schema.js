@@ -264,7 +264,9 @@ const typeDefs = gql`
   }
 
   type FollowedTeams {
-    teamId: Int
+    teamID: Int
+    teamName: String
+    teamLogo: String
   }
 
    scalar Date
