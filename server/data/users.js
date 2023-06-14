@@ -168,7 +168,6 @@ const addTeamFollowing = async (userId,teamID) => {
 };
 const addPlayerFollowing = async (userId,playerID) => {
 
-
   let key_exists = await client.exists(userId +"_PlayerFollowing");
   let index;
   if(key_exists){
@@ -181,7 +180,7 @@ const addPlayerFollowing = async (userId,playerID) => {
     
   if(index){
     const data_pushed = await client.lIndex(userId +"_PlayerFollowing", index-1)
-    console.log(JSON.parse(data_pushed));
+    //console.log(JSON.parse(data_pushed));
   }
   else{
       console.log("cannot add to redis");
@@ -192,7 +191,7 @@ const addPlayerFollowing = async (userId,playerID) => {
   const usersCollection = await users();
   const exists = await usersCollection.findOne({_id:new ObjectId(userId)});
   if(!exists) throw {error:"User not found",statusCode:404};
-  if(exists.followingPlayerID.includes(playerID)) throw {error:"PLayer Already exist in following list", statusCode:400};
+  if(exists.followingPlayerID.includes(playerID)) throw {error:"Player Already exist in following list", statusCode:400};
   const users_data = await usersCollection.updateOne({ _id: new ObjectId(userId) },{ $push: { followingPlayerID: playerID } })
   if (users_data.modifiedCount === 0) throw {error:'Cannot Add the player to following list ', statusCode:500};
   const data = await getUserById(userId);
