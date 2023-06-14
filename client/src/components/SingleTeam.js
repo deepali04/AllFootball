@@ -11,9 +11,7 @@ import NotFoundPage from "./NotFound"
 import TeamSquad from './TeamSquad';
 import TeamFixtures from './TeamFixtures';
 
-const SingleTeam = () => {
-
-    
+const SingleTeam = () => {   
     const sessionToken = JSON.parse(sessionStorage.getItem('sessionToken'));
     let userId;
     if(sessionToken){
@@ -36,6 +34,64 @@ const SingleTeam = () => {
         }
     );
 
+    const { loading:userLoading, error:userError, data:userData } = useQuery(
+        queries.GET_USER_BY_ID, {
+            fetchPolicy: 'cache-and-network',
+            variables:{id: userId},
+            manual: true,
+            refetchOnWindowFocus: false,
+            enabled: false
+        }
+    );
+
+    const [mutate,{loading:followLoading, error:followError, data:followData }] = useMutation(queries.LOAD_TEAM_FOLLOWING);
+    const [unmutate,{loading:unfollowLoading, error:unfollowError, data:unfollowData }] = useMutation(queries.LOAD_TEAM_UNFOLLOWING);
+    
+    const handle_follow = (event) => {
+    
+        mutate({
+            
+            variables:{       
+                userId: sessionToken.Login._id,
+                teamID: teamID,
+                
+            },
+            refetchQueries:[{
+                query : queries.GET_USER_BY_ID,
+                variables:{
+                    id:sessionToken.Login._id
+                }
+            }]
+          
+           
+      })
+          
+           
+      }
+      const handle_unfollow = (event) => {
+        
+        unmutate({
+            
+            variables:{
+               
+                userId: userId,
+                teamID: teamID,
+                
+            },
+            refetchQueries:[{
+                query : queries.GET_USER_BY_ID,
+                variables:{
+                    id:userId
+                }
+            }]
+          
+           
+      })
+          
+           
+      }
+
+
     if (loading) {
         return (
             <div class="spinner-border m-5" role="status">
@@ -49,6 +105,36 @@ const SingleTeam = () => {
     }
 
     if (data) {
+
+        let followers_list;
+
+        const {TeamInformation} = data
+         if(userData === undefined){
+        followers_list =[]
+
+    }
+    else{   
+        const {GetUserById} = userData
+        followers_list = GetUserById.followingTeamID
+        console.log(followers_list)
+
+    }
+        console.log(TeamInformation)
+        let Flag = false
+          if(TeamInformation === null){
+            
+            return(<div class="alert alert-danger" role="alert">
+            Team data not avaiable
+            </div>)
+
+          }
+          else{
+
+          
+
+
+
+
         const  SingleTeamInformation  = data
 
         console.log(SingleTeamInformation.TeamInformation.address);
@@ -63,6 +149,35 @@ const SingleTeam = () => {
                                     <p className='teamname mr-4 mb-0'>{SingleTeamInformation.TeamInformation.countryName}</p>
                                     <p className='singleLeagueh1'>{SingleTeamInformation.TeamInformation.teamName}</p>
                                 </div>
+                                <div className='d-flex'>
+                                        { sessionToken  && sessionToken.Login.isPremium ===true ?(
+                                        <>                   
+                                            { followers_list.includes(teamID.toString())?(
+                                                <div className='col-md-4'>
+                                                <button className='btn btn-success' onClick={(event) => handle_unfollow()}>UNFOLLOW</button>
+                                                </div>
+                                                
+                                            )
+                                            : (
+                                            <div className='col-md-4'>
+                                                <button className='btn btn-success' onClick={(event) => handle_follow(event)}>FOLLOW</button>
+                                                </div>)
+                                            }
+                                        </>
+                                        )
+                            
+                                        :(
+                                        <div>
+                            
+                                        </div>
+                                        )
+                        
+                                        }
+                                    </div>
+
+
+
+
                             </div>
                         </div>
                         <Tabs defaultActiveKey="first">
@@ -85,6 +200,7 @@ const SingleTeam = () => {
         )
     }
 
+}
 
 
 

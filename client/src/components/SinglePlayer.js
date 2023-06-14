@@ -33,6 +33,7 @@ const SinglePlayer = ({ title }) => {
         enabled: false
     }
    );
+   
    const { loading:userLoading, error:userError, data:userData } = useQuery(
     queries.GET_USER_BY_ID, {
         fetchPolicy: 'cache-and-network',
@@ -41,7 +42,7 @@ const SinglePlayer = ({ title }) => {
         refetchOnWindowFocus: false,
         enabled: false
     }
-    )
+    );
 
 const [mutate,{loading:followLoading, error:followError, data:followData }] = useMutation(queries.LOAD_PLAYER_FOLLOWING);
 const [unmutate,{loading:unfollowLoading, error:unfollowError, data:unfollowData }] = useMutation(queries.LOAD_PLAYER_UNFOLLOWING);
