@@ -49,8 +49,7 @@ const handle_follow = (event) => {
     
     mutate({
         
-        variables:{
-           
+        variables:{       
             userId: sessionToken.Login._id,
             PlayerID: playerId,
             
@@ -109,18 +108,14 @@ if(data){
     const {GetPlayerByID} = data
     if(userData === undefined){
         followers_list =[]
-
     }
     else{   
         const {GetUserById} = userData
         followers_list = GetUserById.followingPlayerID
-        console.log(followers_list)
-
     }
     
     let Flag = false
-      if(GetPlayerByID === null ){
-        
+      if(GetPlayerByID === null ){      
         return(<div class="alert alert-danger" role="alert">
         Player data not available
         </div>)
