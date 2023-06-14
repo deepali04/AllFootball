@@ -395,7 +395,9 @@ const LOAD_FOLLOWED_PLAYERS = gql `
 const LOAD_FOLLOWED_TEAMS = gql `
     query GetFollowedTeamsInfo($userId: String!) {
         GetFollowedTeamsInfo(userId: $userId){
-            teamId
+            teamID
+            teamName
+            teamLogo
         }
     }
 `
