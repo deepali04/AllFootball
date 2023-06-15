@@ -363,7 +363,7 @@ module.exports = {
   },
 
   GetUserById: async (_, args) => {
-    console.log(args.id);
+    // console.log(args.id);
     const newUser = await user.getUserById(args.id);
     if(newUser.errors){  
         return newUser.errors[0].message
@@ -561,11 +561,11 @@ Mutation:{
   AddPlayerFollowing: async(_,args)=>{
       const addPlayer = await user.addPlayerFollowing(args.userId,args.PlayerID);
           if(addPlayer.errors){
-              console.log("in errors")        
+              // console.log("in errors")        
               return addPlayer.errors[0].message
           }
           else{
-              console.log("at 574 resolvers, nnot in errors")
+              // console.log("at 574 resolvers, nnot in errors")
               return (addPlayer);
           }
   },
