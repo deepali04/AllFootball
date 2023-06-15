@@ -10,7 +10,11 @@ import { Card } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
-const LeagueStats = () => {
+const LeagueStats = ({title}) => {
+
+    React.useEffect(() => {
+        document.title = title; // Set the page title
+      }, [title]);
 
     let { leagueId } = useParams();
 

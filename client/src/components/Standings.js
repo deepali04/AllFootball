@@ -6,7 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useQuery } from "@apollo/client";
 import NotFoundPage from "./NotFound"
 
-const Standings = () => {
+const Standings = ({title}) => {
+
+
+    React.useEffect(() => {
+        document.title = title; // Set the page title
+      }, [title]);
 
     let { leagueId } = useParams();
     leagueId = parseInt(leagueId)
