@@ -71,9 +71,9 @@ function App() {
               <Routes>
                 <Route path='/' element={<Landing title="All Football"/>} />
                 <Route path='/home' element={<Landing title="All Football"/>} />
-                <Route path='/league/:leagueId' element={<SingleLeague  />} />
-                <Route path='/league/:leagueId/standings' element={<Standings  />} />
-                <Route path='/league/:leagueId/stats' element={<LeagueStats />} />
+                <Route path='/league/:leagueId' element={<SingleLeague title="League"/>} />
+                <Route path='/league/:leagueId/standings' element={<Standings title="League" />} />
+                <Route path='/league/:leagueId/stats' element={<LeagueStats title="League"/>} />
                 <Route path='/player/:playerId' element={<SinglePlayer title="Player Info" />} />
                 <Route path='/team/:teamId' element={<SingleTeam />} />
                 <Route path='/team/:teamId/squad' element={<TeamSquad />} />

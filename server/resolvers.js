@@ -392,7 +392,6 @@ module.exports = {
           let newObject= {playerId: tempPlayerId, playerName: data.response[0].player.name, playerImage: data.response[0].player.photo}
           newArray.push(newObject);        
       }
-      console.log(newArray)
       if(newArray.length!== 0) {
           return newArray;
       } else{
@@ -404,27 +403,19 @@ module.exports = {
   },
 
   GetFollowedTeamsInfo: async (_, args) => {
-    console.log(args.userId)
     let key_exists = await client.exists(args.userId +"_TeamFollowing");
     let index;
     let newArray=[];
     if(key_exists){
-      console.log("keyyyy")
-      console.log("keyyyy")
       const length = await client.lLen(args.userId +"_TeamFollowing");
       for(let i=0; i<length; i++){
           const result = await client.lIndex(args.userId +"_TeamFollowing", i);
-
           let tempTeamId= parseInt(JSON.parse(result));
-
           const {data} = await axios.get("https://api-football-v1.p.rapidapi.com/v2/teams/team/"+ tempTeamId, config);
           let teamObject= {teamID: data.api.teams[0].team_id, teamName: data.api.teams[0].name, teamLogo: data.api.teams[0].logo }
           newArray.push(teamObject);        
       }
-      console.log("This is newArray")
-      console.log(newArray)
       if(newArray.length!== 0) {
-          console.log("returning good from here")
           return newArray;
       } else{
           return [0];
@@ -569,7 +560,6 @@ Mutation:{
 
   AddPlayerFollowing: async(_,args)=>{
       const addPlayer = await user.addPlayerFollowing(args.userId,args.PlayerID);
-      console.log(addPlayer.errors)
           if(addPlayer.errors){
               console.log("in errors")        
               return addPlayer.errors[0].message
