@@ -1,4 +1,4 @@
-# CS554FinalProject - AllFootball⚽
+# CS554FinalProject - GoalGlobe(AllFootball)⚽
 
 ## About AllFootball⚽
 
