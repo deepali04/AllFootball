@@ -9,7 +9,7 @@ Our website offers football fans a one-stop-shop for all their football needs. W
 
 I'm using **Rapid API** for the live football data. It is a paid version. You can go on their website [here](https://rapidapi.com/api-sports/api/api-football) and get you API key and access tokens and replace API key with your API key.
 
-### How to install and run AllFootball⚽
+### How to install and run GoalGlobe⚽
 
 - Fork the Project / Download the source code as a zip file
 - Navigate to the project root directory
@@ -23,7 +23,7 @@ I'm using **Rapid API** for the live football data. It is a paid version. You ca
 - Navigate to localhost:3000
 - Enjoy!!!
 
-### How to use AllFootball⚽
+### How to use GoalGlobe⚽
 
 - Access the landingpage/homepage (localhost: 3000)
 - You'll be able to see the scheculed matches (today's date), You can access all the information (league information, player information, team information) without signup/login. 
