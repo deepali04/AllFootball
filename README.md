@@ -1,4 +1,4 @@
-# CS554FinalProject - GoalGlobe(AllFootball)⚽
+# GoalGlobe(AllFootball)⚽
 
 ## About GoalGlobe - An AllFootball Clone⚽
 
