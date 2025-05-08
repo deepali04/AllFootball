@@ -1,6 +1,6 @@
 # GoalGlobe⚽
 
-## About GoalGlobe - An Fotmob/AllFootball Clone⚽
+## About GoalGlobe - A Fotmob/AllFootball Clone⚽
 
 Our European football live score website provides real-time updates on all the latest football matches and scores across the continent. Our goal is to provide football fans with a comprehensive source of information on their favorite teams and players. Our website offers live score updates for all major European football leagues, including the English Premier League, La Liga, Serie A, League 1 and the Bundesliga. We also provide team and player statistics.
 Our website offers football fans a one-stop-shop for all their football needs. With real-time score updates our website also provides a community of like-minded fans, allowing users to follow their favorite players and teams.
